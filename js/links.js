@@ -4,29 +4,29 @@
 
 window.LINKS = [
   {
-    title: "ACHADINHOS",
+    title: "MEUS QUERIDINHOS DA SHÔ",
     subtitle: "Para facilitar seu dia a dia😍",
-    href: "https://loja.example.com",
+    href: "https://collshp.com/muigradace832?share_channel_code=1&view=storefront",
     iconClass: "fa fa-store",
     variant: "outline"
   },
-  {
-    title: "MEU E-BOOK RECEITAS QUE SECAM",
-    subtitle: "Secar gordura comendo gostoso😋",
-    href: "https://www.ligia-feitos-portfolio.example",
-    iconClass: "fa fa-briefcase",
-    variant: "primary"
-  },
-  {
-    title: "YOUTUBE",
-    subtitle: "Dicas, receitas e dia a dia emagrecendo saudável",
-    href: "https://www.youtube.com/channel/EXEMPLO",
-    iconClass: "fab fa-youtube",
-    variant: "danger"
-  },
+  // {
+  //   title: "MEU E-BOOK RECEITAS QUE SECAM",
+  //   subtitle: "Secar gordura comendo gostoso😋",
+  //   href: "https://www.ligia-feitos-portfolio.example",
+  //   iconClass: "fa fa-briefcase",
+  //   variant: "primary"
+  // },
+  // {
+  //   title: "YOUTUBE",
+  //   subtitle: "Dicas, receitas e dia a dia emagrecendo saudável",
+  //   href: "https://www.youtube.com/channel/EXEMPLO",
+  //   iconClass: "fab fa-youtube",
+  //   variant: "danger"
+  // },
   {
     title: "E-MAIL",
-    subtitle: "Orçamentos e parcerias",
+    subtitle: "Orçamentos e parcerias🤩",
     href: "mailto:pmartinsligia@gmail.com",
     iconClass: "fa fa-envelope",
     variant: "outline"

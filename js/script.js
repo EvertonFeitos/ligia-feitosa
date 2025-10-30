@@ -27,14 +27,19 @@ document.addEventListener("DOMContentLoaded", function () {
     a.href = link.href || "#";
     if (!a.href.startsWith("mailto:")) {
       a.target = "_blank";
-      a.rel = "noopener";
+      a.rel = "noopener noreferrer";
     }
+    // Nome acessível do link
+    const labelTitle = link.title || "Sem título";
+    const labelSub = link.subtitle ? ` — ${link.subtitle}` : "";
+    a.setAttribute("aria-label", `${labelTitle}${labelSub}`);
 
     const inner = document.createElement("div");
     inner.className = "d-flex align-items-center";
 
     const icon = document.createElement("i");
     icon.className = `${link.iconClass || "fa fa-link"} fa-fw me-3`;
+    icon.setAttribute("aria-hidden", "true");
     inner.appendChild(icon);
 
     const txt = document.createElement("div");
@@ -62,6 +67,12 @@ document.addEventListener("DOMContentLoaded", function () {
       console.error("Erro ao criar link:", err, item);
     }
   });
+
+  // Assegura semântica de navegação
+  if (!linksContainer.getAttribute("role")) {
+    linksContainer.setAttribute("role", "navigation");
+    linksContainer.setAttribute("aria-label", "Principais links");
+  }
 
   // Copiar link do perfil
   const copyBtn = document.getElementById("copyProfile");

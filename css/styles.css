@@ -1,8 +1,31 @@
 /* Gradient roxo -> rosa aplicado com prioridade */
-html, body {
+html,
+body {
   height: 100%;
   margin: 0;
 }
+
+/* Skip link para acessibilidade */
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+.skip-link:focus {
+  left: 12px;
+  top: 12px;
+  width: auto;
+  height: auto;
+  padding: 8px 12px;
+  background: #ffde85;
+  color: #1b0036;
+  border-radius: 6px;
+  z-index: 1000;
+}
+
 .lf-bg-gradient {
   min-height: 100%;
   background: linear-gradient(135deg, #6a00f4 0%, #b32aa9 40%, #ff6ec7 100%) fixed;
@@ -15,7 +38,8 @@ html, body {
 .linktree-card {
   width: 100%;
   max-width: 420px;
-  background: rgba(0,0,0,0.18); /* melhor contraste em cima do gradient */
+  background: rgba(0, 0, 0, 0.18);
+  /* melhor contraste em cima do gradient */
   border: none;
   color: #fff;
 }
@@ -26,8 +50,9 @@ html, body {
   height: 96px;
   border-radius: 50%;
   overflow: hidden;
-  border: 2px solid rgba(255,255,255,0.12);
+  border: 2px solid rgba(255, 255, 255, 0.12);
 }
+
 .avatar-img {
   width: 100%;
   height: 100%;
@@ -35,14 +60,16 @@ html, body {
 }
 
 /* Descrição e rodapé com cor clara */
-.desc, .footer-text {
-  color: rgba(255,255,255,0.9);
+.desc,
+.footer-text {
+  color: rgba(255, 255, 255, 0.9);
 }
 
 /* Lista de links - estilos próprios (não depender de Bootstrap para cor) */
 .links-list {
   margin-top: 6px;
 }
+
 .links-list .link-item {
   display: block;
   width: 100%;
@@ -52,32 +79,40 @@ html, body {
   border-radius: 12px;
   transition: transform .12s ease, box-shadow .12s ease;
   box-shadow: none;
-  border: 1px solid rgba(255,255,255,0.06);
-  background-color: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  background-color: rgba(255, 255, 255, 0.04);
   color: #fff !important;
 }
 
 /* Variantes para cores primárias (ex.: ebook) */
 .link-variant-primary {
-  background: linear-gradient(90deg,#ff7aa2,#b32aa9);
+  background: linear-gradient(90deg, #ff7aa2, #b32aa9);
   color: #fff !important;
   border: none;
 }
+
 .link-variant-danger {
-  background: linear-gradient(90deg,#ff4d4d,#c22a2a);
+  background: linear-gradient(90deg, #ff4d4d, #c22a2a);
   color: #fff !important;
   border: none;
 }
+
 .link-variant-outline {
-  background: rgba(255,255,255,0.04);
+  background: rgba(255, 255, 255, 0.04);
   color: #fff !important;
-  border: 1px solid rgba(255,255,255,0.12);
+  border: 1px solid rgba(255, 255, 255, 0.12);
 }
 
 /* Hover */
 .links-list .link-item:hover {
   transform: translateY(-4px);
-  box-shadow: 0 10px 24px rgba(0,0,0,0.45);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.45);
+}
+
+/* Destaque de foco para navegação por teclado */
+.links-list .link-item:focus-visible {
+  outline: 3px solid #ffde85;
+  outline-offset: 2px;
 }
 
 /* Icon fixed width */
@@ -91,14 +126,127 @@ html, body {
 .links-list .fw-bold {
   color: #fff;
 }
+
 .links-list small {
-  color: rgba(255,255,255,0.85);
+  color: rgba(255, 255, 255, 0.85);
 }
 
 /* Ajustes para botões de ação (seguir / copiar) */
 .btn-outline-light {
   color: #fff;
-  border-color: rgba(255,255,255,0.18);
+  border-color: rgba(255, 255, 255, 0.18);
+}
+
+.btn-outline-light:focus-visible,
+.product-btn:focus-visible {
+  outline: 3px solid #ffde85;
+  outline-offset: 2px;
+}
+
+/* =============================
+   Produtos em destaque (home)
+   ============================= */
+.product-section {
+  margin-bottom: 14px;
+  padding: 12px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  text-align: left !important;
+  /* sobrescreve .text-center do card pai */
+}
+
+.product-section-title {
+  font-size: 1rem;
+  margin: 0 0 10px 0;
+  color: #fff;
+}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  /* dois destaques lado a lado */
+  gap: 12px;
+}
+
+.product-card {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 10px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  text-align: left;
+}
+
+.product-image img {
+  width: 96px;
+  height: 96px;
+  object-fit: cover;
+  border-radius: 8px;
+  display: block;
+}
+
+.product-title {
+  margin: 0 0 4px 0;
+  font-size: 0.98rem;
+  color: #fff;
+}
+
+.product-desc {
+  margin: 0 0 6px 0;
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.product-pitch {
+  margin-bottom: 8px;
+  padding: 6px 8px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.88rem;
+  color: #1b0036;
+  background: linear-gradient(90deg, #ffde85, #ff9f85);
+}
+
+.product-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  flex-wrap: nowrap;
+}
+
+.product-market {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 0.9rem;
+}
+
+.product-market .market-icon {
+  width: 18px;
+  height: 18px;
+  object-fit: contain;
+}
+
+.product-btn {
+  font-weight: 600;
+  white-space: nowrap;
+  /* evitar quebrar em várias linhas */
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* Se quiser forçar 1 coluna em telas muito estreitas, ajuste aqui */
+@media (max-width: 340px) {
+  .product-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 /* Small screens */

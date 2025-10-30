@@ -24,7 +24,10 @@
 
 <body class="lf-bg-gradient">
 
-  <main class="container py-5 d-flex justify-content-center">
+  <!-- Link para pular direto ao conteúdo principal (teclado/leitores de tela) -->
+  <a class="skip-link" href="#mainContent">Pular para o conteúdo</a>
+
+  <main id="mainContent" class="container py-5 d-flex justify-content-center" role="main">
     <div class="card shadow-sm linktree-card text-center">
       <div class="card-body p-4">
         <!-- Avatar -->
@@ -42,12 +45,17 @@
         <div class="d-flex justify-content-center gap-2 mb-3">
           <a id="igBtn" href="https://www.instagram.com/ligia.feitos/" target="_blank" rel="noopener"
             class="btn btn-outline-light btn-sm">
-            <i class="fab fa-instagram me-1"></i> Seguir
+            <i class="fab fa-instagram me-1" aria-hidden="true"></i> Seguir
           </a>
         </div>
 
+        <!-- Produtos em destaque (renderizados dinamicamente) -->
+        <!-- <div id="featuredProducts" class="mb-3" aria-live="polite"> -->
+          <!-- Populado via js -->
+        <!-- </div> -->
+
         <!-- Lista de links (preenchida dinamicamente) -->
-        <div id="linksList" class="links-list">
+        <div id="linksList" class="links-list" role="navigation" aria-label="Principais links">
           <!-- Populado via js -->
         </div>
 
@@ -68,6 +76,10 @@
 
   <!-- Custom JS -->
   <script src="js/script.js"></script>
+  
+  <!-- Produtos em destaque (dados + renderização) -->
+  <script src="js/products.js"></script>
+  <script src="js/render-products.js"></script>
 </body>
 
 </html>
