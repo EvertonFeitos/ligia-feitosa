@@ -1,0 +1,109 @@
+/* Gradient roxo -> rosa aplicado com prioridade */
+html, body {
+  height: 100%;
+  margin: 0;
+}
+.lf-bg-gradient {
+  min-height: 100%;
+  background: linear-gradient(135deg, #6a00f4 0%, #b32aa9 40%, #ff6ec7 100%) fixed;
+  color: #fff;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Card com leve transparência para overlay sobre o gradient */
+.linktree-card {
+  width: 100%;
+  max-width: 420px;
+  background: rgba(0,0,0,0.18); /* melhor contraste em cima do gradient */
+  border: none;
+  color: #fff;
+}
+
+/* Avatar */
+.avatar-wrapper {
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 2px solid rgba(255,255,255,0.12);
+}
+.avatar-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Descrição e rodapé com cor clara */
+.desc, .footer-text {
+  color: rgba(255,255,255,0.9);
+}
+
+/* Lista de links - estilos próprios (não depender de Bootstrap para cor) */
+.links-list {
+  margin-top: 6px;
+}
+.links-list .link-item {
+  display: block;
+  width: 100%;
+  text-decoration: none;
+  margin-bottom: 10px;
+  padding: 12px 14px;
+  border-radius: 12px;
+  transition: transform .12s ease, box-shadow .12s ease;
+  box-shadow: none;
+  border: 1px solid rgba(255,255,255,0.06);
+  background-color: rgba(255,255,255,0.04);
+  color: #fff !important;
+}
+
+/* Variantes para cores primárias (ex.: ebook) */
+.link-variant-primary {
+  background: linear-gradient(90deg,#ff7aa2,#b32aa9);
+  color: #fff !important;
+  border: none;
+}
+.link-variant-danger {
+  background: linear-gradient(90deg,#ff4d4d,#c22a2a);
+  color: #fff !important;
+  border: none;
+}
+.link-variant-outline {
+  background: rgba(255,255,255,0.04);
+  color: #fff !important;
+  border: 1px solid rgba(255,255,255,0.12);
+}
+
+/* Hover */
+.links-list .link-item:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 24px rgba(0,0,0,0.45);
+}
+
+/* Icon fixed width */
+.links-list i.fa-fw {
+  width: 28px;
+  text-align: center;
+  color: #fff;
+}
+
+/* Text inside */
+.links-list .fw-bold {
+  color: #fff;
+}
+.links-list small {
+  color: rgba(255,255,255,0.85);
+}
+
+/* Ajustes para botões de ação (seguir / copiar) */
+.btn-outline-light {
+  color: #fff;
+  border-color: rgba(255,255,255,0.18);
+}
+
+/* Small screens */
+@media (max-width: 420px) {
+  .linktree-card {
+    margin: 0 12px;
+  }
+}
