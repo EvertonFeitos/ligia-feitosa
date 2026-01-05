@@ -1,0 +1,3 @@
+User-agent: *
+Disallow:
+Sitemap: https://ligiafeitosa.com.br/ebook-1/sitemap.xml
