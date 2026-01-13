@@ -37,11 +37,12 @@ body {
 /* Card com leve transparência para overlay sobre o gradient */
 .linktree-card {
   width: 100%;
-  max-width: 420px;
-  background: rgba(0, 0, 0, 0.18);
-  /* melhor contraste em cima do gradient */
+  max-width: 600px;
+  background: rgba(255, 255, 255, 0.98);
+  /* Background mais sólido para melhor legibilidade */
   border: none;
-  color: #fff;
+  color: #1a1a1a;
+  border-radius: 24px;
 }
 
 /* Avatar */
@@ -50,7 +51,7 @@ body {
   height: 96px;
   border-radius: 50%;
   overflow: hidden;
-  border: 2px solid rgba(255, 255, 255, 0.12);
+  border: 3px solid rgba(139, 92, 246, 0.3);
 }
 
 .avatar-img {
@@ -59,199 +60,250 @@ body {
   object-fit: cover;
 }
 
-/* Descrição e rodapé com cor clara */
+/* Títulos e descrições */
+.linktree-card h1,
+.linktree-card h2,
+.linktree-card h3 {
+  color: #1a1a1a;
+}
+
+/* Descrição e rodapé */
 .desc,
 .footer-text {
-  color: rgba(255, 255, 255, 0.9);
+  color: #666;
 }
 
-/* Lista de links - estilos próprios (não depender de Bootstrap para cor) */
-.links-list {
-  margin-top: 6px;
-}
-
-.links-list .link-item {
-  display: block;
-  width: 100%;
+.footer-text a {
+  color: #8B5CF6;
   text-decoration: none;
-  margin-bottom: 10px;
-  padding: 12px 14px;
+}
+
+.footer-text a:hover {
+  text-decoration: underline;
+}
+
+/* =============================
+   E-book Featured Section
+   ============================= */
+.ebook-featured {
+  background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  text-align: left;
+  position: relative;
+  border: 1px solid rgba(139, 92, 246, 0.1);
+}
+
+.ebook-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #8B5CF6;
+  color: white;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 16px;
+}
+
+.ebook-badge i {
+  font-size: 0.85rem;
+}
+
+.ebook-content-wrapper {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.ebook-image {
+  flex-shrink: 0;
+}
+
+.ebook-image img {
+  width: 120px;
+  height: 160px;
+  object-fit: cover;
   border-radius: 12px;
-  transition: transform .12s ease, box-shadow .12s ease;
-  box-shadow: none;
-  border: 1px solid rgba(255, 255, 255, 0.06);
-  background-color: rgba(255, 255, 255, 0.04);
-  color: #fff !important;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
 }
 
-/* Variantes para cores primárias (ex.: ebook) */
-.link-variant-primary {
-  background: linear-gradient(90deg, #ff7aa2, #b32aa9);
-  color: #fff !important;
-  border: none;
+.ebook-content {
+  flex: 1;
 }
 
-.link-variant-danger {
-  background: linear-gradient(90deg, #ff4d4d, #c22a2a);
-  color: #fff !important;
-  border: none;
+.ebook-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 12px;
+  color: #1a1a1a;
 }
 
-.link-variant-outline {
-  background: rgba(255, 255, 255, 0.04);
-  color: #fff !important;
-  border: 1px solid rgba(255, 255, 255, 0.12);
+.ebook-description {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #555;
+  margin-bottom: 16px;
 }
 
-/* Hover */
-.links-list .link-item:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.45);
+.btn-ebook {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: linear-gradient(135deg, #A855F7 0%, #8B5CF6 100%);
+  color: white;
+  padding: 12px 24px;
+  border-radius: 12px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(139, 92, 246, 0.3);
 }
 
-/* Destaque de foco para navegação por teclado */
-.links-list .link-item:focus-visible {
-  outline: 3px solid #ffde85;
-  outline-offset: 2px;
+.btn-ebook:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(139, 92, 246, 0.4);
+  color: white;
 }
 
-/* Icon fixed width */
-.links-list i.fa-fw {
-  width: 28px;
-  text-align: center;
-  color: #fff;
-}
-
-/* Text inside */
-.links-list .fw-bold {
-  color: #fff;
-}
-
-.links-list small {
-  color: rgba(255, 255, 255, 0.85);
-}
-
-/* Ajustes para botões de ação (seguir / copiar) */
-.btn-outline-light {
-  color: #fff;
-  border-color: rgba(255, 255, 255, 0.18);
-}
-
-.btn-outline-light:focus-visible,
-.product-btn:focus-visible {
-  outline: 3px solid #ffde85;
+.btn-ebook:focus-visible {
+  outline: 3px solid #A855F7;
   outline-offset: 2px;
 }
 
 /* =============================
-   Produtos em destaque (home)
+   Cards Grid (YouTube e Achadinhos)
    ============================= */
-.product-section {
-  margin-bottom: 14px;
-  padding: 12px;
-  border-radius: 12px;
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.10);
-  text-align: left !important;
-  /* sobrescreve .text-center do card pai */
-}
-
-.product-section-title {
-  font-size: 1rem;
-  margin: 0 0 10px 0;
-  color: #fff;
-}
-
-.product-grid {
+.cards-grid {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  /* dois destaques lado a lado */
-  gap: 12px;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
 }
 
-.product-card {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  padding: 10px;
-  border-radius: 10px;
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  text-align: left;
+.feature-card {
+  background: white;
+  border-radius: 16px;
+  padding: 24px 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  border-bottom: 4px solid transparent;
+  transition: all 0.3s ease;
+  text-align: center;
 }
 
-.product-image img {
-  width: 96px;
-  height: 96px;
-  object-fit: cover;
-  border-radius: 8px;
+.feature-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+
+.feature-card .card-link {
+  text-decoration: none;
+  color: inherit;
   display: block;
 }
 
-.product-title {
-  margin: 0 0 4px 0;
-  font-size: 0.98rem;
-  color: #fff;
+.card-icon {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 16px;
+  font-size: 28px;
+  color: white;
 }
 
-.product-desc {
-  margin: 0 0 6px 0;
-  font-size: 0.9rem;
-  color: rgba(255, 255, 255, 0.9);
+.youtube-icon {
+  background: #FF0000;
 }
 
-.product-pitch {
+.achadinhos-icon {
+  background: #FF6B35;
+}
+
+.feature-card-youtube {
+  border-bottom-color: #FF0000;
+}
+
+.feature-card-achadinhos {
+  border-bottom-color: #FF6B35;
+}
+
+.card-title {
+  font-size: 1.1rem;
+  font-weight: 700;
   margin-bottom: 8px;
-  padding: 6px 8px;
-  border-radius: 8px;
-  font-weight: 600;
-  font-size: 0.88rem;
-  color: #1b0036;
-  background: linear-gradient(90deg, #ffde85, #ff9f85);
+  color: #1a1a1a;
 }
 
-.product-actions {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-  gap: 8px;
-  flex-wrap: nowrap;
-}
-
-.product-market {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  color: rgba(255, 255, 255, 0.9);
+.card-description {
   font-size: 0.9rem;
+  color: #666;
+  margin: 0;
+  line-height: 1.5;
 }
 
-.product-market .market-icon {
-  width: 18px;
-  height: 18px;
-  object-fit: contain;
-}
+/* =============================
+   Responsividade
+   ============================= */
 
-.product-btn {
-  font-weight: 600;
-  white-space: nowrap;
-  /* evitar quebrar em várias linhas */
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-}
+/* Mobile: empilhar E-book e cards verticalmente */
+@media (max-width: 768px) {
+  .linktree-card {
+    max-width: 95%;
+    margin: 0 auto;
+  }
 
-/* Se quiser forçar 1 coluna em telas muito estreitas, ajuste aqui */
-@media (max-width: 340px) {
-  .product-grid {
+  .ebook-content-wrapper {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .ebook-content {
+    text-align: center;
+  }
+
+  .ebook-image img {
+    width: 140px;
+    height: 180px;
+  }
+
+  .cards-grid {
     grid-template-columns: 1fr;
+  }
+
+  .ebook-title {
+    font-size: 1.3rem;
+  }
+
+  .btn-ebook {
+    width: 100%;
+    justify-content: center;
   }
 }
 
-/* Small screens */
-@media (max-width: 420px) {
-  .linktree-card {
-    margin: 0 12px;
+@media (max-width: 480px) {
+  .ebook-featured {
+    padding: 20px 16px;
+  }
+
+  .ebook-image img {
+    width: 120px;
+    height: 160px;
+  }
+
+  .feature-card {
+    padding: 20px 16px;
+  }
+
+  .card-icon {
+    width: 56px;
+    height: 56px;
+    font-size: 24px;
   }
 }
