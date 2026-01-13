@@ -1,12 +1,63 @@
-// render-products.js - insere uma seção de "Produtos em destaque" acima do link ACHADINHOS
+// render-products.js - renderiza seção do ebook, carrossel de produtos e links de e-mail
 (function () {
+  // Renderiza a seção do ebook em destaque
+  function renderEbookSection() {
+    const ebookContainer = document.getElementById('ebookSection');
+    if (!ebookContainer || !window.EBOOK) return;
+
+    const ebook = window.EBOOK;
+    const section = document.createElement('div');
+    section.className = 'ebook-section';
+
+    const a = document.createElement('a');
+    a.className = 'ebook-link';
+    a.href = ebook.href || '#';
+    a.target = '_blank';
+    a.rel = 'noopener noreferrer';
+    a.setAttribute('aria-label', `${ebook.title} — ${ebook.description}`);
+
+    const content = document.createElement('div');
+    content.className = 'ebook-content';
+
+    const icon = document.createElement('i');
+    icon.className = `${ebook.iconClass || 'fa fa-book'} ebook-icon`;
+    icon.setAttribute('aria-hidden', 'true');
+
+    const textWrapper = document.createElement('div');
+    textWrapper.className = 'ebook-text';
+
+    const title = document.createElement('div');
+    title.className = 'ebook-title';
+    title.textContent = ebook.title || '';
+
+    const subtitle = document.createElement('div');
+    subtitle.className = 'ebook-subtitle';
+    subtitle.textContent = ebook.subtitle || '';
+
+    const description = document.createElement('div');
+    description.className = 'ebook-description';
+    description.textContent = ebook.description || '';
+
+    textWrapper.appendChild(title);
+    textWrapper.appendChild(subtitle);
+    textWrapper.appendChild(description);
+
+    content.appendChild(icon);
+    content.appendChild(textWrapper);
+    a.appendChild(content);
+    section.appendChild(a);
+
+    ebookContainer.appendChild(section);
+  }
+
+  // Cria um card de produto para o carrossel
   function createProductCard(p) {
     const art = document.createElement('article');
-    art.className = 'product-card';
+    art.className = 'carousel-product-card';
 
     // Imagem
     const imgWrap = document.createElement('div');
-    imgWrap.className = 'product-image';
+    imgWrap.className = 'carousel-product-image';
     const img = document.createElement('img');
     img.loading = 'lazy';
     img.alt = p.title || 'Produto';
@@ -15,43 +66,23 @@
 
     // Conteúdo
     const content = document.createElement('div');
-    content.className = 'product-content';
+    content.className = 'carousel-product-content';
 
     const h3 = document.createElement('h3');
-    h3.className = 'product-title';
+    h3.className = 'carousel-product-title';
     h3.textContent = p.title || 'Produto';
 
     const desc = document.createElement('p');
-    desc.className = 'product-desc';
+    desc.className = 'carousel-product-desc';
     desc.textContent = p.description || '';
 
     const pitch = document.createElement('div');
-    pitch.className = 'product-pitch';
+    pitch.className = 'carousel-product-pitch';
     pitch.textContent = p.pitch || '';
 
-    // Marketplace + botão
-    const actions = document.createElement('div');
-    actions.className = 'product-actions';
-
-    const market = document.createElement('div');
-    market.className = 'product-market';
-    if (p.marketplace && (p.marketplace.icon || p.marketplace.name)) {
-      if (p.marketplace.icon) {
-        const mkImg = document.createElement('img');
-        mkImg.src = p.marketplace.icon;
-        mkImg.alt = p.marketplace.name || 'Marketplace';
-        mkImg.className = 'market-icon';
-        market.appendChild(mkImg);
-      }
-      if (p.marketplace.name) {
-        const mkName = document.createElement('span');
-        mkName.textContent = p.marketplace.name;
-        market.appendChild(mkName);
-      }
-    }
-
+    // Botão
     const btn = document.createElement('a');
-    btn.className = 'btn btn-sm btn-light product-btn';
+    btn.className = 'btn btn-sm btn-light carousel-product-btn';
     btn.href = p.affiliateUrl || '#';
     if (!btn.href.startsWith('mailto:')) {
       btn.target = '_blank';
@@ -61,13 +92,10 @@
     btn.setAttribute('aria-label', `Ver na loja — ${p.title || 'Produto'}${mkName}`);
     btn.innerHTML = '<i class="fa fa-cart-shopping me-1" aria-hidden="true"></i> Ver na loja';
 
-    actions.appendChild(market);
-    actions.appendChild(btn);
-
     content.appendChild(h3);
     content.appendChild(desc);
     if (p.pitch) content.appendChild(pitch);
-    content.appendChild(actions);
+    content.appendChild(btn);
 
     art.appendChild(imgWrap);
     art.appendChild(content);
@@ -75,48 +103,56 @@
     return art;
   }
 
-  function renderFeaturedProducts() {
-    const featuredContainer = document.getElementById('featuredProducts');
-    const linksContainer = document.getElementById('linksList');
-    if (!featuredContainer && !linksContainer) return;
+  // Renderiza o carrossel de produtos (4 produtos)
+  function renderProductsCarousel() {
+    const carouselContainer = document.getElementById('productsCarousel');
+    if (!carouselContainer) return;
 
     const data = (window.PRODUCTS_BY_CATEGORY && window.PRODUCTS_BY_CATEGORY.destaque) || [];
-    const products = data.slice(0, 2); // apenas dois produtos na home
-    if (!products.length) return; // nada para renderizar
+    const products = data.slice(0, 4); // 4 produtos no carrossel
+    if (!products.length) return;
 
-  const section = document.createElement('section');
-  section.className = 'product-section';
-  section.setAttribute('role', 'region');
+    const section = document.createElement('section');
+    section.className = 'carousel-section';
+    section.setAttribute('role', 'region');
 
-  const title = document.createElement('h2');
-  title.className = 'product-section-title';
-  title.id = 'featuredProductsTitle';
-  title.innerHTML = '<i class="fa fa-star me-2" aria-hidden="true"></i>Produtos em destaque';
-  section.setAttribute('aria-labelledby', title.id);
+    const title = document.createElement('h2');
+    title.className = 'carousel-section-title';
+    title.id = 'productsCarouselTitle';
+    title.innerHTML = '<i class="fa fa-star me-2" aria-hidden="true"></i>Produtos Afiliados';
+    section.setAttribute('aria-labelledby', title.id);
 
-  const grid = document.createElement('div');
-  grid.className = 'product-grid';
-  grid.setAttribute('role', 'list');
+    const carouselWrapper = document.createElement('div');
+    carouselWrapper.className = 'carousel-wrapper';
 
-    products.forEach(p => grid.appendChild(createProductCard(p)));
+    const carousel = document.createElement('div');
+    carousel.className = 'carousel-container';
+    carousel.setAttribute('role', 'list');
 
+    products.forEach(p => carousel.appendChild(createProductCard(p)));
+
+    carouselWrapper.appendChild(carousel);
     section.appendChild(title);
-    section.appendChild(grid);
+    section.appendChild(carouselWrapper);
 
-    // Inserir no espaço dedicado acima da lista; fallback: topo de links
-    if (featuredContainer) {
-      featuredContainer.innerHTML = '';
-      featuredContainer.appendChild(section);
-    } else if (linksContainer) {
-      linksContainer.prepend(section);
-    }
+    carouselContainer.appendChild(section);
   }
 
-  // Aguardar o carregamento da lista de links (script.js) finalizar o DOMContentLoaded
-  // Como este arquivo é incluído DEPOIS de js/script.js no HTML, basta chamar diretamente.
+  // Renderiza os links de e-mail
+  function renderEmailLinks() {
+    const emailContainer = document.getElementById('emailLinks');
+    if (!emailContainer || !window.EMAIL_LINKS) return;
+
+    const emails = window.EMAIL_LINKS;
+    emails.forEach(email => emailContainer.appendChild(window.createLinkItem(email)));
+  }
+
+  // Executa após carregamento
   try {
-    renderFeaturedProducts();
+    renderEbookSection();
+    renderProductsCarousel();
+    renderEmailLinks();
   } catch (err) {
-    console.error('Falha ao renderizar produtos:', err);
+    console.error('Falha ao renderizar componentes:', err);
   }
 })();
