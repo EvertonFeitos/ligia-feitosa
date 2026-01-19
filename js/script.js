@@ -1,3 +1,7 @@
+// NOTA: Este arquivo não está sendo usado no layout atual (2026-01-13)
+// O layout atual usa HTML estático. Este arquivo pode ser reutilizado
+// se houver necessidade de gerar links dinamicamente no futuro.
+//
 // script.js - renderiza a lista de links usando window.LINKS
 document.addEventListener("DOMContentLoaded", function () {
   const linksContainer = document.getElementById("linksList");

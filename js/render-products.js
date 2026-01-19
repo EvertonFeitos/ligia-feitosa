@@ -1,3 +1,6 @@
+// NOTA: Este arquivo não está sendo usado no layout atual (2026-01-13)
+// O layout atual não renderiza produtos dinamicamente.
+//
 // render-products.js - insere uma seção de "Produtos em destaque" acima do link ACHADINHOS
 (function () {
   function createProductCard(p) {

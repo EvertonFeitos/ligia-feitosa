@@ -1,3 +1,7 @@
+// NOTA: Este arquivo não está sendo usado no layout atual (2026-01-13)
+// O layout atual não exibe produtos dinamicamente. Este arquivo pode ser
+// reaproveitado futuramente para a página de Achadinhos.
+//
 // Estrutura de produtos por categoria (pode ser reaproveitada futuramente para a página de Achadinhos)
 // Edite este arquivo para adicionar/alterar produtos. Não é necessário mexer no HTML.
 // Cada produto:
